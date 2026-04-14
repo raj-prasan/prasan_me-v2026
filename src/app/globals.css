@@ -1,26 +1,177 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 252 62% 99%;
+    --foreground: 252 67% 2%;
+    --muted: 72 22% 94%;
+    --muted-foreground: 72 1% 39%;
+    --popover: 252 62% 98%;
+    --popover-foreground: 252 67% 1%;
+    --card: 252 62% 98%;
+    --card-foreground: 252 67% 1%;
+    --border: 252 3% 94%;
+    --input: 252 3% 94%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 72 11% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 15 99% 31%;
+    --destructive-foreground: 15 99% 91%;
+    --ring: 252 11% 35%;
+    --radius: 0.5rem;
+
+    --scrollbar-thumb: 217.9 10.6% 64.9%;
+    --scrollbar-track: transparent;
+    --selection-background: #ccfbf1;
+    --selection-foreground: #3f988f;
+
+    --kbd-background: 216 12.2% 83.9%;
+    --kbd-foreground: 220.9 39.3% 11%;
+    --kbd-border: 217.9 10.6% 64.9%;
+
+    --highlight-background: #d9f99d;
+    --highlight-foreground: #fde047;
+
+    --radius-small: 4px;
+    --radius-base: 8px;
+    --radius-large: 12px;
+  }
+
+  .dark {
+    --background: 270 5% 7%;
+    --foreground: 252 37% 98%;
+    --muted: 0 0% 11%;
+    --muted-foreground: 0 0% 63%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 252 37% 99%;
+    --card: 0 0% 6%;
+    --card-foreground: 252 37% 99%;
+    --border: 0 0% 16%;
+    --input: 0 0% 11%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 164 100% 80%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 240 3.7% 16%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 21% 12%;
+    --destructive-foreground: 0 100% 75%;
+    --ring: 27 100% 80%;
+
+    --highlight-background: #713f12;
+    --highlight-foreground: #fde047;
+    --selection-background: #042f2e;
+    --selection-foreground: #6ee7b7;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
+/* Selection */
+::selection {
+  color: var(--selection-foreground);
+  background: var(--selection-background);
+}
+
+::-moz-selection {
+  color: var(--selection-foreground);
+  background: var(--selection-background);
+}
+
+/* Container padding */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Hide scrollbar */
+body::-webkit-scrollbar {
+  display: none;
+}
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes slideFromDownAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-from-down-and-fade-1 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.1s both;
+}
+.animate-slide-from-down-and-fade-2 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.2s both;
+}
+.animate-slide-from-down-and-fade-3 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.3s both;
+}
+.animate-slide-from-down-and-fade-4 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.4s both;
+}
+.animate-slide-from-down-and-fade-5 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.5s both;
+}
+.animate-slide-from-down-and-fade-6 {
+  animation: slideFromDownAndFade 0.6s ease-in-out 0.6s both;
+}
+
+/* Article styling */
+article h1 + h2 {
+  margin-top: 4px !important;
+}
+
+article h1 + p,
+article h2 + p {
+  margin-top: 8px !important;
+}
+
+article figure + h1,
+article p + h1 {
+  margin-top: 48px !important;
+}
+
+article [data-highlight] {
+  position: relative;
+}
+
+article [data-highlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: scaleY(1.1);
+  z-index: -1;
+  transition: 0.5s;
+}
+
+article [data-highlight="true"]::before {
+  background: var(--selection-background);
+}
+
+article [data-highlight="false"]::before {
+  background: transparent;
 }
