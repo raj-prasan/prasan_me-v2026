@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import { ProfileHeader } from "@/components/sections/profile-header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,8 +41,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="prasan-theme"
         >
           <div className="mx-auto mb-16 w-full max-w-screen-sm py-8">
+            <div className="items-center gap-8 container py-3 md:py-4 space-y-12">
+              <ProfileHeader isActive={false}/>
+            </div>
+            
             {children}
           </div>
         </ThemeProvider>

@@ -97,10 +97,9 @@ const data: {
 
 export const Skills = () => {
   return (
-    <ShellSection index={2}>
+    <ShellSection index={4} title="Skills and tools">
       <TooltipProvider>
-      <div className="container px-4 mx-auto">
-      <h2 className="text-[15px] font-medium">Skills and tools</h2>
+      <div className="container">
       <h4 className="mt-2 ">
         Some of the languages, tools and concepts I have experience with.
       </h4>

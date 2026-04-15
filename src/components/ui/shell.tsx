@@ -5,8 +5,9 @@ export function ShellSection({
   children,
   index,
   title,
+  foreground = true,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { index: number }) {
+}: React.HTMLAttributes<HTMLDivElement> & { index: number } & {foreground?: boolean})  {
   return (
     <section
       className={cn(
@@ -15,7 +16,9 @@ export function ShellSection({
       )}
       {...props}
     >
-      <h3 className="font-medium text-[15px]">{title}</h3>
+      <h3 className={cn("font-medium text-[16px]", { "text-zinc-500": foreground })}>
+        {title}
+      </h3>
       {children}
     </section>
   )

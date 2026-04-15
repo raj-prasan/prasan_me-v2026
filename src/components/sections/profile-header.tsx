@@ -1,15 +1,17 @@
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import Pages from "./pages";
+
 interface ProfileHeaderProps {
-  isActive: boolean
+  isActive: boolean;
 }
 
-export function ProfileHeader({
-  isActive
-}: ProfileHeaderProps) {
+export function ProfileHeader({ isActive }: ProfileHeaderProps) {
   return (
     <header className="top-0 z-50 w-full animate-slide-from-down-and-fade-1 cursor-context-menu">
-      <div className="flex flex-col">
+      <div className="flex flex-row justify-between">
         <div className="cursor-pointer">
-          <h1 className="font-medium text-[15px] transition-element">
+          <h1 className="font-medium text-[19px] transition-element">
             <span className="sr-only">Prasan Raj</span>
             <span
               aria-hidden="true"
@@ -28,7 +30,7 @@ export function ProfileHeader({
                   className="inline-block"
                   style={{ transitionDelay: "175ms" }}
                 >
-                raj-prasan
+                  raj-prasan
                 </span>
               </span>
             </span>
@@ -47,7 +49,8 @@ export function ProfileHeader({
             </span>
           </div>
         )}
+        <Pages/>
       </div>
     </header>
-  )
+  );
 }
