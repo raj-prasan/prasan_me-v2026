@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 import Pages from "./pages";
+
 
 interface ProfileHeaderProps {
   isActive: boolean;

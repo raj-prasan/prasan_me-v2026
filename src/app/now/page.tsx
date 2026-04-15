@@ -43,9 +43,9 @@ const Now = () => {
             <ShellSection index={index} title={n.title} key={index} foreground={true}>
               {n.contents.map((content,index)=>{
                 return(
-                  <div className="leading-relaxed px-6 my-7" key={index}>
-                    <span className="text-zinc-300 dark:text-zinc-700">-</span>
-                    <p className="inline leading-relaxed text-zinc-500 dark:text-zinc-300">{content}</p>
+                  <div className=" my-7" key={index}>
+                    <span className="text-zinc-300 dark:text-zinc-700 mr-5">-</span>
+                    <p className="inline leading-relaxed text-foreground">{content}</p>
                   </div>
                 )
               })}
