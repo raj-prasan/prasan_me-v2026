@@ -2,9 +2,11 @@ import { cn } from "@/lib/utils";
 import { Newsreader } from "next/font/google";
 import Link from "next/link";
 import { CustomLink } from "@/components/sections/contact-me";
-import { now } from "@/lib/constants";
+import { now, LAST_UPDATED } from "@/lib/constants";
 import { ShellSection } from "@/components/ui/shell";
 import { MinimalMap } from "@/components/ui/minimal-map";
+import LastUpdated from "@/components/ui/last-updated";
+
 export interface NowProps {
   title: string
   contents: string[]
@@ -34,6 +36,7 @@ const Now = () => {
         learning, and exploring right now — a simple way to document where I am
         in life without the noise of constant updates.
       </p>
+      <LastUpdated date={LAST_UPDATED} />
       {
         now.map((n,index)=>{
           return(
@@ -51,6 +54,15 @@ const Now = () => {
         })
       }
       <MinimalMap/>
+      <hr></hr>
+      <div className="flex justify-between font-medium  text-emerald-400">
+        <span>
+          Make it happen.
+        </span>
+        <span>
+          Driven by curiosity.
+        </span>
+      </div>
     </section>
   );
 };
