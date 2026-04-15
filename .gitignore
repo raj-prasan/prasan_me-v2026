@@ -41,3 +41,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 constants.ts
+profile_picture.jpg

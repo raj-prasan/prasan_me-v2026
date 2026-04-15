@@ -14,7 +14,7 @@ const pages: { name: string; href: string }[] = [
   },
   {
     name: "[/posts]",
-    href: "/post",
+    href: "/posts",
   },
   {
     name: "[now]",

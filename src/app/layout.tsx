@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono , Pixelify_Sans} from "next/font/google";
+
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,10 @@ import { ProfileHeader } from "@/components/sections/profile-header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+const pixelifySans = Pixelify_Sans({
+  variable: "--font-pixelify-sans",
   subsets: ["latin"],
 });
 
@@ -34,6 +39,7 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased",
           GeistSans.variable,
           GeistMono.variable,
+          pixelifySans.variable
         )}
       >
         <ThemeProvider
