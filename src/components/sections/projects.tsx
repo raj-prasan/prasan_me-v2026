@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { ShellSection } from "@/components/ui/shell";
-import { projects } from "@/lib/constants"
+import { prisma } from "@/lib/prisma";
 export interface ProjectProps {
   href: string;
   title: string;
@@ -8,7 +8,8 @@ export interface ProjectProps {
   status: "wip" | "maintained" | "archived";
 }
 
-export function Projects() {
+export async function Projects() {
+  const projects = await prisma.project.findMany()
   return (
     <ShellSection index={3} title="Projects">
       <div className="grid grid-cols-1 gap-6 ">

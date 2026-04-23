@@ -1,16 +1,17 @@
 import { buttonVariants } from "../ui/button";
 import { ShellSection } from "../ui/shell";
-import { workExperience } from "@/lib/constants"
 import Link from "next/link";
 import { cn } from "@/lib/utils"
 import type React from "react"
+import { prisma } from "@/lib/prisma";
 export interface WorkProps {
   href: string
   title: string
   status?: "freelancing" | "contract"
   buttonText?: string
 }
-export function WorkExperience(){
+export async function WorkExperience(){
+  const workExperience = await prisma.workExperience.findMany();
   return ( 
     <ShellSection index={2} title="Work Experience">
       {workExperience.map((work, index) => (

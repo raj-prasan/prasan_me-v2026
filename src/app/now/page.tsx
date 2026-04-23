@@ -2,10 +2,10 @@ import { cn } from "@/lib/utils";
 import { Newsreader } from "next/font/google";
 import Link from "next/link";
 import { CustomLink } from "@/components/sections/contact-me";
-import { now, LAST_UPDATED } from "@/lib/constants";
 import { ShellSection } from "@/components/ui/shell";
 import { MinimalMap } from "@/components/ui/minimal-map";
 import LastUpdated from "@/components/ui/last-updated";
+import { prisma } from "@/lib/prisma";
 
 export interface NowProps {
   title: string
@@ -16,7 +16,13 @@ const newsreader = Newsreader({
   subsets: ["latin"],
 });
 
-const Now = () => {
+const  Now = async() => {
+  const allNow = await prisma.now.findMany();
+  const updateDate = await prisma.lastUpdated.findFirst()
+  if (!updateDate){
+    return null
+  }
+  const parsedDate = new Date(updateDate?.lastUpdate)
   return (
     <section className="prose prose-zinc dark:prose-invert text-[15px] animate-slide-from-down-and-fade-2 text-pretty items-center gap-8 container py-3 md:py-4 space-y-12">
       <p className="leading-relaxed">
@@ -36,9 +42,9 @@ const Now = () => {
         learning, and exploring right now — a simple way to document where I am
         in life without the noise of constant updates.
       </p>
-      <LastUpdated date={LAST_UPDATED} />
+      <LastUpdated date={parsedDate} />
       {
-        now.map((n,index)=>{
+        allNow.map((n,index)=>{
           return(
             <ShellSection index={index} title={n.title} key={index} foreground={true}>
               {n.contents.map((content,index)=>{

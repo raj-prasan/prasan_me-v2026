@@ -13,11 +13,11 @@ datasource db {
 }
 
 model Post{
-  id String @default(cuid()) @unique
+  id String @default(cuid()) @unique @id
   title String
   content String
   image String?
-  createdAt DateTime
+  createdAt DateTime @default(now())
   tags String[]
 }
 enum Status{
@@ -27,7 +27,7 @@ enum Status{
 }
 
 model Project {
-  id String @unique @default(cuid())
+  id String @unique @default(cuid()) @id
   title String
   description String
   href String
@@ -35,17 +35,19 @@ model Project {
 }
 
 model WorkExperience{
-  id String @unique @default(cuid())
+  id String @unique @default(cuid()) @id
   title String
   href String
   buttonText String
+  status String?
 }
 
 model lastUpdated{
-  lastUpdate DateTime @unique @default(now())
+  lastUpdate DateTime @unique @default(now()) @id
 }
 
 model Now {
-  id String @unique
+  id String @unique @id
+  title String 
   contents String[]
 }
