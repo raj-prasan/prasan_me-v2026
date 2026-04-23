@@ -1,6 +1,6 @@
-import { ShellSection } from "@/components/ui/shell"
-import Link from "next/link"
-
+import { ShellSection } from "@/components/ui/shell";
+import Link from "next/link";
+import { ThemeToggle } from "../ui/change-theme";
 export function ContactMe() {
   return (
     <ShellSection index={5} title="Connect">
@@ -11,9 +11,7 @@ export function ContactMe() {
             Email
           </CustomLink>
           . You can also follow me on{" "}
-          <CustomLink href="https://github.com/raj-prasan">
-            Github
-          </CustomLink>{" "}
+          <CustomLink href="https://github.com/raj-prasan">Github</CustomLink>{" "}
           and{" "}
           <CustomLink href="https://www.linkedin.com/in/prasan-raj/">
             LinkedIn
@@ -22,16 +20,19 @@ export function ContactMe() {
         </p>
       </div>
       <hr className="my-8"></hr>
-      <div className="mt-3 text-center text-sm text-zinc-800 dark:text-zinc-500">
-        © 2026. All rights reserved.
+      <div className="mt-3 flex items-center justify-center gap-3">
+        <div className="text-center text-sm text-zinc-800 dark:text-zinc-500">
+          © 2026. All rights reserved.
+        </div>
+        <ThemeToggle />
       </div>
     </ShellSection>
-  )
+  );
 }
 
 interface CustomLinkProps {
-  href: string
-  children: React.ReactNode
+  href: string;
+  children: React.ReactNode;
 }
 
 export function CustomLink({ href, children }: CustomLinkProps) {
@@ -44,5 +45,5 @@ export function CustomLink({ href, children }: CustomLinkProps) {
     >
       {children}
     </Link>
-  )
+  );
 }

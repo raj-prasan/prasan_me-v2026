@@ -42,3 +42,4 @@ yarn-error.log*
 next-env.d.ts
 constants.ts
 profile_picture.jpg
+/generated/prisma

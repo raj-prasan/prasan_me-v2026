@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ThemeToggle } from "../ui/change-theme";
+
 const pages: { name: string; href: string }[] = [
   {
     name: "[/]",
@@ -41,7 +41,6 @@ const Pages = () => {
           {page.name}
         </Link>
       ))}
-      <ThemeToggle />
     </div>
   );
 };
