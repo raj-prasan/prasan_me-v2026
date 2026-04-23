@@ -13,7 +13,7 @@ export interface WorkProps {
 export async function WorkExperience(){
   const workExperience = await prisma.workExperience.findMany();
   return ( 
-    <ShellSection index={2} title="Work Experience">
+    <ShellSection index={2} title="Experience">
       {workExperience.map((work, index) => (
         <div
           key={index}

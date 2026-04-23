@@ -13,7 +13,7 @@ datasource db {
 }
 
 model Post{
-  id String @default(cuid()) @unique @id
+  id String @default(uuid()) @unique @id
   title String
   content String
   image String?
