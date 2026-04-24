@@ -6,7 +6,7 @@ const PostsPage = async() => {
   const postData = await prisma.post.findMany();
   return ( 
     <div>
-      <section className="prose prose-zinc dark:prose-invert text-[15px] animate-slide-from-down-and-fade-2 text-pretty pb-6">
+      <section className="prose prose-zinc dark:prose-invert text-[15px] animate-slide-from-down-and-fade-2 text-pretty items-center gap-8 container py-3 md:py-4 space-y-12">
         <p className="leading relaxed">
           I built this page to capture and share small updates, ideas, and progress—without overthinking or waiting for something big.
         </p>

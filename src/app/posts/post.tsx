@@ -17,7 +17,7 @@ const Post = ({id,title,content,image,createdAt,tags}: PostProps) => {
     <div className="my-2">
       <div className="flex flex-row gap-4">
         <div className="shrink-0 mt-1">
-          <Image alt="profile picture" src="/profile_picture.jpg" height={40} width={40} className="rounded-md" />
+          <Image alt="profile picture" src="/https://res.cloudinary.com/dby6qs2rb/image/upload/v1777048427/IMG-20250217-WA0003_1_tch3g5.jpg" height={40} width={40} className="rounded-md" />
         </div>
         
         <div className="flex flex-col flex-1">
