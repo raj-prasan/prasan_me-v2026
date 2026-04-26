@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
 };
 module.exports = {
   allowedDevOrigins: ['10.55.21.182'],
+   images: {
+    domains: ['res.cloudinary.com'],
+  },
 }
 
 export default nextConfig;
