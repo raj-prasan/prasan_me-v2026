@@ -17,7 +17,7 @@ export const ThemeToggle = () => {
 
   return ( 
     <span>
-      <Button  onClick={changeTheme}>
+      <Button className='border-0' onClick={changeTheme} variant={"link"}>
         {theme === "dark"? <Sun className='size-4'/> : <Moon className='size-4 '/>}
       </Button>
       

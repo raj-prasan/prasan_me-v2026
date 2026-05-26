@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Geist, Geist_Mono , Pixelify_Sans} from "next/font/google";
+import { Geist, Geist_Mono , Pixelify_Sans, Inter } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -9,7 +9,7 @@ import "./globals.css";
 import { ProfileHeader } from "@/components/sections/profile-header";
 import type { Viewport } from "next"
 
-
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", inter.variable)}>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",

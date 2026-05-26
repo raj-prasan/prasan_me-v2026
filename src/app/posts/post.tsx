@@ -43,7 +43,7 @@ const Post = ({id,title,content,image,createdAt,tags}: PostProps) => {
                 <span key={index} className="mr-2">{tag}</span>
               ))}
             </div>
-            <Button size="sm" className="mt-0">
+            <Button size="sm" className="mt-0" variant={"link"}>
               Share
             </Button>
           </div>
