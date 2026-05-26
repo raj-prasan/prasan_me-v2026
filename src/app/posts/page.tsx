@@ -1,10 +1,10 @@
-export const dynamic = "force-dynamic";
 import { ShellSection } from "@/components/ui/shell";
 import Post from "./post";
 import { prisma } from "@/lib/prisma";
+import getPosts from "@/controllers/posts";
 
 const PostsPage = async () => {
-  const postData = await prisma.post.findMany();
+  const postData = await getPosts();
   return (
     <div>
       <section className="prose prose-zinc dark:prose-invert text-[15px] animate-slide-from-down-and-fade-2 text-pretty items-center gap-8 container py-3 md:py-4 space-y-12">
