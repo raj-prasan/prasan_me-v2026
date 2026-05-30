@@ -20,11 +20,18 @@ export function ContactMe() {
         </p>
       </div>
       <hr className="my-8"></hr>
-      <div className="mt-3 flex items-center justify-center gap-3">
-        <div className="text-center text-sm text-zinc-800 dark:text-zinc-500">
-          © 2026. All rights reserved.
+      <div className="prose prose-zinc dark:prose-invert text-[15px]">
+        <div className="font-[family-name:var(--font-pixelify-sans)] text-2xl">Let's build</div> 
+        <div className="font-[family-name:var(--font-pixelify-sans)] text-2xl text-emerald-300">something.</div>
+      </div>
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <div className="text-center text-xs md:text-sm text-zinc-800 dark:text-zinc-500">
+          © 2026 PRASAN RAJ
         </div>
-        <ThemeToggle />
+        <div className="text-center text-xs md:text-sm text-zinc-800 dark:text-zinc-500">
+          CRAFTED WITH &hearts;
+        </div>
+        {/* <ThemeToggle /> */}
       </div>
     </ShellSection>
   );
