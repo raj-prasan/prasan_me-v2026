@@ -2,7 +2,7 @@ import { ShellSection } from "@/components/ui/shell";
 import Post from "./post";
 import { prisma } from "@/lib/prisma";
 import getPosts from "@/controllers/posts";
-
+export const revalidate = 60; // seconds
 const PostsPage = async () => {
   const postData = await getPosts();
   return (
