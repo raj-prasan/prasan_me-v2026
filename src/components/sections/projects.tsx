@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { ShellSection } from "@/components/ui/shell";
-import { prisma } from "@/lib/prisma";
+import { getProjects } from "@/controllers/projects";
+
 export const revalidate = 60; // seconds
 export interface ProjectProps {
   href: string;
@@ -10,7 +11,7 @@ export interface ProjectProps {
 }
 
 export async function Projects() {
-  const projects = await prisma.project.findMany()
+  const projects = await getProjects();
   return (
     <ShellSection index={3} title="Projects">
       <div className="grid grid-cols-1 gap-6 ">
