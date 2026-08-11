@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { ShellSection } from "@/components/ui/shell";
 import { prisma } from "@/lib/prisma";
+export const revalidate = 60; // seconds
 export interface ProjectProps {
   href: string;
   title: string;
