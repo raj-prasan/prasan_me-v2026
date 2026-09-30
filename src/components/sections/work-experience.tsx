@@ -4,6 +4,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils"
 import type React from "react"
 import { prisma } from "@/lib/prisma";
+
+export const revalidate = 60; // seconds
+
 export interface WorkProps {
   href: string
   title: string
