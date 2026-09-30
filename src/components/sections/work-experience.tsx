@@ -14,7 +14,11 @@ export interface WorkProps {
   buttonText?: string
 }
 export async function WorkExperience(){
-  const workExperience = await prisma.workExperience.findMany();
+  const workExperience = await prisma.workExperience.findMany({
+    orderBy:{
+      updated_at: "desc"
+    }
+});
   return ( 
     <ShellSection index={2} title="Experience">
       {workExperience.map((work, index) => (
