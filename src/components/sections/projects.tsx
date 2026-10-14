@@ -2,7 +2,6 @@ import { ArrowUpRight } from "lucide-react";
 import { ShellSection } from "@/components/ui/shell";
 import { getProjects } from "@/controllers/projects";
 
-export const revalidate = 60; // seconds
 export interface ProjectProps {
   href: string;
   title: string;
