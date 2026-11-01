@@ -1,14 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  
-};
-module.exports = {
-  allowedDevOrigins: ['10.55.21.182'],
-   images: {
-    domains: ['res.cloudinary.com'],
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
+  async redirects() {
+    return [
+      { source: "/about", destination: "/#about", permanent: false },
+      { source: "/posts", destination: "/", permanent: false },
+      { source: "/now", destination: "/#about", permanent: false },
+    ]
   },
 }
 
-export default nextConfig;
+export default nextConfig

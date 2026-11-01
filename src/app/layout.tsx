@@ -1,100 +1,113 @@
-import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Geist, Geist_Mono , Pixelify_Sans, Inter } from "next/font/google";
-import { siteConfig } from "@/config/site";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
-import { cn } from "@/lib/utils";
-import "./globals.css";
-import { ProfileHeader } from "@/components/sections/profile-header";
-import type { Viewport } from "next"
+import type { Metadata, Viewport } from "next"
+import { Barlow_Condensed, Geist_Mono } from "next/font/google"
+import { Header } from "@/components/header"
+import { Thread } from "@/components/thread"
+import { Cursor } from "@/components/cursor"
+import { SmoothScroll } from "@/components/smooth-scroll"
+import { profile } from "@/content/site"
+import "./globals.css"
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const display = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  variable: "--font-display-family",
+  display: "swap",
+  adjustFontFallback: true,
+})
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const mono = Geist_Mono({
   subsets: ["latin"],
-});
-const pixelifySans = Pixelify_Sans({
-  variable: "--font-pixelify-sans",
-  subsets: ["latin"],
-});
+  weight: ["400", "500"],
+  variable: "--font-mono-family",
+  display: "swap",
+  adjustFontFallback: true,
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const viewport: Viewport = {
+  themeColor: "#0c0c0b",
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
-  metadataBase : new URL("https://prasan.tech"),
+  metadataBase: new URL(profile.site),
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`
+    default: "Prasan Raj — I build systems that hold",
+    template: "%s — Prasan Raj",
   },
-  description: siteConfig.description,
-  keywords:[
+  description: profile.description,
+  applicationName: "Prasan Raj",
+  authors: [{ name: profile.name, url: profile.site }],
+  creator: profile.name,
+  keywords: [
     "Prasan Raj",
     "prasan raj",
     "prasan raj portfolio",
     "prasan raj github",
-    "raj-prasan github",
     "raj-prasan",
-    "prasan",
     "prasan tezpur university",
-    "prasan full stack developer",
-    "software developer"
+    "full stack developer",
+    "software developer",
+    "Tezpur University",
   ],
-  authors:[
-    {
-      name: "Prasan Raj",
-      url: "https://prasan.tech"
-    }
-  ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name
+    url: profile.site,
+    title: "Prasan Raj — I build systems that hold",
+    description: profile.description,
+    siteName: profile.name,
   },
-  icons:{
-    icon: "/prasan.svg"
-  }
+  twitter: {
+    card: "summary_large_image",
+    title: "Prasan Raj — I build systems that hold",
+    description: profile.description,
+  },
+  robots: { index: true, follow: true },
+}
 
-};
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: profile.site,
+  email: profile.email,
+  jobTitle: "Software Developer",
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "Assam",
+    addressCountry: "India",
+  },
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: "Tezpur University",
+  },
+  sameAs: [profile.github, profile.linkedin],
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", inter.variable)}>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          GeistSans.variable,
-          GeistMono.variable,
-          pixelifySans.variable
-        )}
-      >
-        <ThemeProvider
-          attribute={"class"}
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-          storageKey="prasan-theme"
-        >
-          <div className="mx-auto mb-16 w-full max-w-screen-sm py-8">
-            <div className="items-center gap-8 container py-3 md:py-4 space-y-12">
-              <ProfileHeader isActive={false}/>
-            </div>
-            
-            {children}
-          </div>
-        </ThemeProvider>
+    <html lang="en" className={`${display.variable} ${mono.variable}`}>
+      <body>
+        <a className="skip" href="#content">
+          Skip to content
+        </a>
+        <div className="grain" aria-hidden="true" />
+        <Header />
+        <Thread />
+        <SmoothScroll />
+        <Cursor />
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
-  );
+  )
 }

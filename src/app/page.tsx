@@ -1,24 +1,21 @@
-import Image from "next/image";
-import { ProfileHeader } from "@/components/sections/profile-header";
-import { AboutMe } from "@/components/sections/about-me";
-import { Skills } from "@/components/sections/skills";
-import { WorkExperience } from "@/components/sections/work-experience";
-import { Projects } from "@/components/sections/projects";
-import { ContactMe } from "@/components/sections/contact-me";
-
-// Segment config is only read from page, layout, or route modules.
-// The same export inside WorkExperience was ignored, so `/` stayed
-// prerendered until the next deploy.
-export const revalidate = 60;
+import { Hero } from "@/components/hero"
+import { About } from "@/components/about"
+import { Work } from "@/components/work"
+import { Stack } from "@/components/stack"
+import { Experience } from "@/components/experience"
+import { Contact } from "@/components/contact"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <section className="items-center gap-8 container py-3 md:py-4 space-y-12">
-      <AboutMe/>
-      <WorkExperience/>
-      <Projects/>
-      <Skills/>
-      <ContactMe/>
-    </section>
-  );
+    <main id="content">
+      <Hero />
+      <About />
+      <Work />
+      <Stack />
+      <Experience />
+      <Contact />
+      <Footer />
+    </main>
+  )
 }
