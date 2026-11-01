@@ -1,15 +1,7 @@
 /**
- * Portfolio content. Edit this file to update copy, projects, and links.
- *
- * Facts come from the previous site (prasan.tech) and public GitHub repos.
- * Do not add employers, awards, metrics, or grades that are not listed here.
- *
- * TODOs for Prasan:
- * - Experience rows have no dates in the source data. Add `years` when you want them shown.
- * - Posts and the Now page lived in the database and were not in the repo, so they are not on this page.
- * - toolkit-cli has no README; the description is the one from the previous site.
- * - KoLLaM is featured because it was on the previous site. The GitHub repo is a fork.
- * - Phone number is intentionally omitted.
+ * Static UI copy only.
+ * Projects, experience, posts, and the Now page are read from Postgres.
+ * Phone number is intentionally omitted.
  */
 
 export const profile = {
@@ -47,95 +39,6 @@ export const about = {
   },
 } as const
 
-export type ProjectStatus = "wip" | "maintained" | "archived"
-
-export type ProjectLayout = "feature" | "companion" | "wide" | "standard" | "half"
-
-export type Project = {
-  title: string
-  description: string
-  status?: ProjectStatus
-  code: string
-  live?: string
-  tags: string[]
-  layout: ProjectLayout
-}
-
-export const projects: Project[] = [
-  {
-    title: "Varya",
-    description:
-      "Seamless AI support that scales with your team's knowledge. Chat, voice, and human handoff grounded in the company knowledge base.",
-    status: "maintained",
-    code: "https://github.com/raj-prasan/varya",
-    live: "https://varya.live",
-    tags: ["Next.js", "Convex", "Clerk", "TypeScript"],
-    layout: "feature",
-  },
-  {
-    title: "Pukaar",
-    description:
-      "Real-time crowdsourced disaster response, hyper-local relief coordination, and SOS dispatch. Built for TEZHACK 2026.",
-    code: "https://github.com/raj-prasan/pukaar",
-    live: "https://pukaar-web.vercel.app",
-    tags: ["Next.js", "React Native", "Convex", "Clerk"],
-    layout: "companion",
-  },
-  {
-    title: "Social Studio",
-    description:
-      "Flyrank capstone. An AI studio that turns long-form writing into platform-specific posts for X, LinkedIn, and Instagram.",
-    code: "https://github.com/raj-prasan/flyrank-capstone-social-studio",
-    tags: ["React", "Express", "Redis", "Postgres"],
-    layout: "wide",
-  },
-  {
-    title: "sunoAI",
-    description:
-      "A secure, AI-powered journaling platform for understanding your thoughts and mental well-being.",
-    status: "archived",
-    code: "https://github.com/raj-prasan/sunoAI",
-    live: "https://sunoai-gamma.vercel.app",
-    tags: ["Next.js", "Convex", "Groq"],
-    layout: "standard",
-  },
-  {
-    title: "docos",
-    description:
-      "A clean, collaborative, fast document editor inspired by Google Docs, built with modern web technologies.",
-    status: "wip",
-    code: "https://github.com/raj-prasan/docos",
-    tags: ["Next.js", "Liveblocks", "Clerk"],
-    layout: "half",
-  },
-  {
-    title: "splitz",
-    description:
-      "A group expense tracker for shared bills, balances, and settling up. Clean UI for friends and small groups.",
-    status: "archived",
-    code: "https://github.com/raj-prasan/splitz",
-    live: "https://splitzpay.vercel.app",
-    tags: ["Next.js", "React"],
-    layout: "half",
-  },
-  {
-    title: "KoLLaM",
-    description: "AI meets traditional kolam art and sharing.",
-    status: "archived",
-    code: "https://github.com/raj-prasan/KoLLaM",
-    tags: ["Next.js", "Supabase", "GraphQL"],
-    layout: "wide",
-  },
-  {
-    title: "toolkit-cli",
-    description: "A toolkit CLI for automation and development tasks.",
-    status: "wip",
-    code: "https://github.com/raj-prasan/toolkit-cli",
-    tags: ["Node.js"],
-    layout: "standard",
-  },
-]
-
 export const skillGroups: { title: string; items: string[] }[] = [
   {
     title: "Design",
@@ -171,50 +74,41 @@ export const skillGroups: { title: string; items: string[] }[] = [
   },
 ]
 
-export type ExperienceItem = {
-  org: string
-  kind: string
-  detail: string
-  href?: string
-  /** TODO: add when known. Not shown while empty. */
-  years?: string
-}
-
-export const experience: ExperienceItem[] = [
-  {
-    org: "GirlScript Summer of Code",
-    kind: "Volunteer",
-    detail: "Open source contributor",
-  },
-  {
-    org: "Independent Web Developer",
-    kind: "Freelancing",
-    detail: "Building modern web apps",
-  },
-  {
-    org: "Flyrank AI",
-    kind: "Internship",
-    detail: "flyrank.ai",
-    href: "https://flyrank.ai/",
-  },
-]
-
 export const contact = {
   title: ["Let's", "build", "something"],
   body: "If you are looking to connect for a project, write to me.",
 } as const
 
 export const nav = [
-  { href: "#top", label: "Index" },
-  { href: "#about", label: "About" },
-  { href: "#work", label: "Work" },
-  { href: "#stack", label: "Stack" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#top", label: "Index" },
+  { href: "/#about", label: "About" },
+  { href: "/#work", label: "Work" },
+  { href: "/#stack", label: "Stack" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#contact", label: "Contact" },
+  { href: "/posts", label: "Posts" },
+  { href: "/now", label: "Now" },
 ] as const
 
-export const statusLabel: Record<ProjectStatus, string> = {
+export const postsIntro =
+  "I built this page to capture and share small updates, ideas, and progress—without overthinking or waiting for something big."
+
+export const nowIntro = {
+  before: "Inspired by",
+  linkLabel: "nownownow.com",
+  href: "https://nownownow.com/",
+  after:
+    ", this page gives a snapshot of what I'm building, learning, and exploring right now — a simple way to document where I am in life without the noise of constant updates.",
+  left: "Make it happen.",
+  right: "Driven by curiosity.",
+  mapLabel: "Tezpur, Assam",
+  mapHref:
+    "https://www.openstreetmap.org/?mlat=26.69961&mlon=92.83507#map=14/26.69961/92.83507",
+} as const
+
+/** Labels for the Status enum stored on Project. */
+export const statusLabel = {
   maintained: "Maintained",
   wip: "WIP",
   archived: "Archived",
-}
+} as const

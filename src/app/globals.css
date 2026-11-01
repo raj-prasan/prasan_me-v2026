@@ -976,6 +976,86 @@ html.has-cursor.is-hot .cursor-ring {
   }
 }
 
+.page-top {
+  padding-bottom: 1.5rem;
+}
+
+.page-title {
+  margin: 0.6rem 0 1rem;
+  font-size: clamp(4.2rem, 12vw, 8.5rem);
+}
+
+.post-list,
+.now-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 0 2rem;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  color: var(--lime);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.post h2 {
+  margin: 0.55rem 0 0.8rem;
+  font-family: var(--font-display-family), Impact, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.post p,
+.now-list li {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--mute);
+}
+
+.post img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  margin-top: 1.1rem;
+  object-fit: cover;
+}
+
+.now-list li {
+  border-top: 1px solid var(--line);
+  padding: 0.9rem 0;
+  color: var(--paper);
+}
+
+.now-list li::before {
+  content: "— ";
+  color: var(--mute);
+}
+
+.now-signoff {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--lime);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

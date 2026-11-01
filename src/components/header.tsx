@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useId, useRef, useState } from "react"
+import Link from "next/link"
 import { nav, profile } from "@/content/site"
 import { getLenis } from "@/lib/lenis-store"
 
@@ -55,6 +56,17 @@ export function Header() {
     }
   }
 
+  function onNavClick(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    const hash = href.startsWith("/#") ? href.slice(1) : href.startsWith("#") ? href : ""
+    const onHome = window.location.pathname === "/"
+    if (!hash || !onHome) {
+      setOpen(false)
+      return
+    }
+    event.preventDefault()
+    scrollToHref(hash)
+  }
+
   function onMenuKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Escape") {
       event.preventDefault()
@@ -100,10 +112,10 @@ export function Header() {
     <>
       <header className={scrolled ? "site-header is-scrolled" : "site-header"}>
         <div className="header-inner">
-          <a className="logo" href="#top" aria-label={`${profile.name}, home`}>
+          <Link className="logo" href="/#top" aria-label={`${profile.name}, home`}>
             <span aria-hidden="true">PR</span>
             <span className="logo-dot" aria-hidden="true" />
-          </a>
+          </Link>
           <button
             ref={buttonRef}
             className="menu-button"
@@ -141,17 +153,14 @@ export function Header() {
             <ol className="menu-list">
               {nav.map((item, index) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     style={{ transitionDelay: open ? `${index * 45}ms` : "0ms" }}
-                    onClick={(event) => {
-                      event.preventDefault()
-                      scrollToHref(item.href)
-                    }}
+                    onClick={(event) => onNavClick(event, item.href)}
                   >
                     <span className="menu-index">{String(index).padStart(2, "0")}</span>
                     <span className="label">{item.label}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ol>
